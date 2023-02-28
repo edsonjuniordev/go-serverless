@@ -4,8 +4,6 @@ A simple application to study the serverless concepts with Golang.
 
 ## 🚀 Getting Started
 
----
-
 Follow the steps to install the project on your local machine.
 
 ### 📋 Prerequisites
