@@ -1,0 +1,35 @@
+service: go-serverless
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: us-east-1
+  stage: local
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+    # A network é composta pelo nome do seu projeto e a network que você definiu no docker-compose.yaml
+    dockerNetwork: go-serverless_mysql
+
+package:
+  patterns:
+    - '!./**'
+    - './bin/**'
+
+functions:
+  hello-world:
+    handler: bin/hello-world
+    package:
+      include:
+        - ./bin/hello-world
+    events:
+      - http:
+          path: /hello-world
+          method: get
+          cors: true
+          private: false

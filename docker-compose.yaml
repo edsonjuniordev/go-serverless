@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  database:
+    container_name: 'mycontainername'
+    image: mysql:5.7
+    ports:
+      - '8080:3306'
+    networks:
+      - mysql
+    environment:
+      MYSQL_DATABASE: 'mydatabase'
+      MYSQL_ROOT_PASSWORD: 'root'
+
+networks:
+  mysql:
